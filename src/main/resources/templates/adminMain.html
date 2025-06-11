@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="adminCommon::common-header"></head>
+<body class="sb-nav-fixed">
+<nav th:replace="adminCommon::common-navbar"></nav>
+<div id="layoutSidenav">
+    <div th:replace="adminCommon::common-sidenav"></div>
+
+    <div id="layoutSidenav_content">
+        <main>
+            <div class="container-fluid px-4">
+                <div class="admin-dashboard-header">
+                    <h1 class="dashboard-title">管理中心</h1>
+                    <p class="dashboard-subtitle">欢迎回来，管理员</p>
+                </div>
+
+                <!-- 主要统计卡片 -->
+                <div class="row dashboard-stats mb-5">
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="stat-card stat-card-primary">
+                            <div class="stat-card-body">
+                                <div class="stat-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <div class="stat-value" th:text="${humanTotal}">12</div>
+                                    <div class="stat-label">运动中心总人数</div>
+                                    <div class="stat-change positive">
+                                        <i class="fas fa-arrow-up"></i> +8.2%
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="stat-card stat-card-warning">
+                            <div class="stat-card-body">
+                                <div class="stat-icon">
+                                    <i class="fas fa-user-tie"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <div class="stat-value" th:text="${employeeTotal}">11</div>
+                                    <div class="stat-label">员工人数</div>
+                                    <div class="stat-change neutral">
+                                        <i class="fas fa-minus"></i> 0%
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="stat-card stat-card-success">
+                            <div class="stat-card-body">
+                                <div class="stat-icon">
+                                    <i class="fas fa-id-card"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <div class="stat-value" th:text="${memberTotal}">1</div>
+                                    <div class="stat-label">会员人数</div>
+                                    <div class="stat-change positive">
+                                        <i class="fas fa-arrow-up"></i> +12.5%
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="stat-card stat-card-info">
+                            <div class="stat-card-body">
+                                <div class="stat-icon">
+                                    <i class="fas fa-dumbbell"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <div class="stat-value" th:text="${equipmentTotal}">7</div>
+                                    <div class="stat-label">器材数量</div>
+                                    <div class="stat-change positive">
+                                        <i class="fas fa-arrow-up"></i> +2
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 快捷操作面板 -->
+                <div class="row mb-5">
+                    <div class="col-12">
+                        <div class="quick-actions-panel">
+                            <h5 class="panel-title">
+                                <i class="fas fa-bolt me-2"></i>快捷操作
+                            </h5>
+                            <div class="quick-actions-grid">
+                                <a href="/member/toAddMember" class="quick-action-item">
+                                    <div class="action-icon">
+                                        <i class="fas fa-user-plus"></i>
+                                    </div>
+                                    <span>添加会员</span>
+                                </a>
+                                <a href="/employee/selEmployee" class="quick-action-item">
+                                    <div class="action-icon">
+                                        <i class="fas fa-user-cog"></i>
+                                    </div>
+                                    <span>管理员工</span>
+                                </a>
+                                <a href="/equipment/selEquipment" class="quick-action-item">
+                                    <div class="action-icon">
+                                        <i class="fas fa-tools"></i>
+                                    </div>
+                                    <span>器材管理</span>
+                                </a>
+                                <a href="/class/selClass" class="quick-action-item">
+                                    <div class="action-icon">
+                                        <i class="fas fa-calendar-alt"></i>
+                                    </div>
+                                    <span>课程管理</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 图表区域 -->
+                <div class="row">
+                    <div class="col-xl-8 mb-4">
+                        <div class="chart-card">
+                            <div class="chart-header">
+                                <h6 class="chart-title">
+                                    <i class="fas fa-chart-line me-2"></i>会员增长趋势
+                                </h6>
+                                <div class="chart-actions">
+                                    <button class="btn btn-chart-action active" data-period="week">周</button>
+                                    <button class="btn btn-chart-action" data-period="month">月</button>
+                                    <button class="btn btn-chart-action" data-period="year">年</button>
+                                </div>
+                            </div>
+                            <div class="chart-body">
+                                <canvas id="myAreaChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 mb-4">
+                        <div class="chart-card">
+                            <div class="chart-header">
+                                <h6 class="chart-title">
+                                    <i class="fas fa-chart-bar me-2"></i>器材使用率
+                                </h6>
+                            </div>
+                            <div class="chart-body">
+                                <canvas id="myBarChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 最近活动 -->
+                <div class="row">
+                    <div class="col-xl-6 mb-4">
+                        <div class="activity-card">
+                            <div class="activity-header">
+                                <h6 class="activity-title">
+                                    <i class="fas fa-clock me-2"></i>最近活动
+                                </h6>
+                                <a href="/member/selMember" class="view-all-link">查看全部</a>
+                            </div>
+                            <div class="activity-list">
+                                <div class="activity-item">
+                                    <div class="activity-icon success">
+                                        <i class="fas fa-user-plus"></i>
+                                    </div>
+                                    <div class="activity-content">
+                                        <div class="activity-text">新会员 <strong>张三</strong> 注册成功</div>
+                                        <div class="activity-time">2分钟前</div>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-icon warning">
+                                        <i class="fas fa-exclamation-triangle"></i>
+                                    </div>
+                                    <div class="activity-content">
+                                        <div class="activity-text">器材 <strong>跑步机#01</strong> 需要维护</div>
+                                        <div class="activity-time">15分钟前</div>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-icon info">
+                                        <i class="fas fa-calendar-check"></i>
+                                    </div>
+                                    <div class="activity-content">
+                                        <div class="activity-text">瑜伽课程已安排到今晚7点</div>
+                                        <div class="activity-time">1小时前</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 mb-4">
+                        <div class="system-info-card">
+                            <div class="system-header">
+                                <h6 class="system-title">
+                                    <i class="fas fa-info-circle me-2"></i>系统信息
+                                </h6>
+                            </div>
+                            <div class="system-stats">
+                                <div class="system-stat-item">
+                                    <span class="stat-label">系统运行时间</span>
+                                    <span class="stat-value">12天 8小时</span>
+                                </div>
+                                <div class="system-stat-item">
+                                    <span class="stat-label">在线用户</span>
+                                    <span class="stat-value">3人</span>
+                                </div>
+                                <div class="system-stat-item">
+                                    <span class="stat-label">数据库状态</span>
+                                    <span class="stat-value status-good">正常</span>
+                                </div>
+                                <div class="system-stat-item">
+                                    <span class="stat-label">存储使用</span>
+                                    <span class="stat-value">68%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer th:replace="adminCommon::common-footer"></footer>
+    </div>
+</div>
+
+<div th:include="adminCommon::common-scripts"></div>
+</body>
+</html>

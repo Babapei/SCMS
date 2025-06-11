@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="userCommon::common-header"></head>
+<body class="sb-nav-fixed">
+<nav th:replace="userCommon::common-navbar"></nav>
+<div id="layoutSidenav">
+    <div th:replace="userCommon::common-sidenav"></div>
+
+    <div id="layoutSidenav_content">
+        <main>
+            <div class="container-fluid px-4">
+                <!-- 欢迎标题 -->
+                <div class="user-welcome-header">
+                    <h1 class="welcome-title">欢迎回来！</h1>
+                    <p class="welcome-subtitle" th:text="'你好，' + ${member.memberName} + '，开始今天的运动之旅吧'"></p>
+                </div>
+
+                <!-- 个人信息概览卡片 -->
+                <div class="row user-overview mb-4">
+                    <div class="col-xl-8 mb-4">
+                        <div class="user-profile-card">
+                            <div class="profile-header">
+                                <div class="profile-avatar">
+                                    <i class="fas fa-user-circle"></i>
+                                </div>
+                                <div class="profile-info">
+                                    <h3 th:text="${member.memberName}">会员姓名</h3>
+                                    <p class="member-id">会员ID: <span th:text="${member.memberAccount}">12345</span></p>
+                                    <div class="member-status">
+                                        <span class="status-badge active">会员有效</span>
+                                        <span class="join-date">加入时间: <span th:text="${member.cardTime}">2024-01-01</span></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="profile-stats">
+                                <div class="stat-item">
+                                    <i class="fas fa-calendar-check"></i>
+                                    <div class="stat-content">
+                                        <span class="stat-number">5</span>
+                                        <span class="stat-label">已报名课程</span>
+                                    </div>
+                                </div>
+                                <div class="stat-item">
+                                    <i class="fas fa-fire"></i>
+                                    <div class="stat-content">
+                                        <span class="stat-number">12</span>
+                                        <span class="stat-label">连续签到</span>
+                                    </div>
+                                </div>
+                                <div class="stat-item">
+                                    <i class="fas fa-trophy"></i>
+                                    <div class="stat-content">
+                                        <span class="stat-number">3</span>
+                                        <span class="stat-label">完成目标</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 mb-4">
+                        <div class="quick-actions-card">
+                            <h5 class="card-title">
+                                <i class="fas fa-bolt me-2"></i>快捷操作
+                            </h5>
+                            <div class="action-buttons">
+                                <a href="/user/toApplyClass" class="action-btn primary">
+                                    <i class="fas fa-plus"></i>
+                                    <span>报名课程</span>
+                                </a>
+                                <a href="/user/toUserClass" class="action-btn secondary">
+                                    <i class="fas fa-list"></i>
+                                    <span>我的课程</span>
+                                </a>
+                                <a href="/user/toUserInfo" class="action-btn tertiary">
+                                    <i class="fas fa-user"></i>
+                                    <span>个人信息</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 热门课程推荐 -->
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <div class="course-recommendation-card">
+                            <div class="recommendation-header">
+                                <h5 class="recommendation-title">
+                                    <i class="fas fa-star me-2"></i>热门课程推荐
+                                </h5>
+                                <a href="/user/toApplyClass" class="view-all-courses">查看全部课程</a>
+                            </div>
+                            <div class="course-grid">
+                                <div class="course-item">
+                                    <div class="course-icon yoga">
+                                        <i class="fas fa-leaf"></i>
+                                    </div>
+                                    <div class="course-info">
+                                        <h6>瑜伽课程</h6>
+                                        <p>舒缓身心，提升柔韧性</p>
+                                        <div class="course-details">
+                                            <span class="time"><i class="fas fa-clock"></i> 60分钟</span>
+                                            <span class="difficulty easy">初级</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="course-item">
+                                    <div class="course-icon cardio">
+                                        <i class="fas fa-heartbeat"></i>
+                                    </div>
+                                    <div class="course-info">
+                                        <h6>有氧运动</h6>
+                                        <p>燃烧脂肪，增强心肺</p>
+                                        <div class="course-details">
+                                            <span class="time"><i class="fas fa-clock"></i> 45分钟</span>
+                                            <span class="difficulty medium">中级</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="course-item">
+                                    <div class="course-icon strength">
+                                        <i class="fas fa-dumbbell"></i>
+                                    </div>
+                                    <div class="course-info">
+                                        <h6>力量训练</h6>
+                                        <p>增肌塑形，提升力量</p>
+                                        <div class="course-details">
+                                            <span class="time"><i class="fas fa-clock"></i> 50分钟</span>
+                                            <span class="difficulty hard">高级</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="course-item">
+                                    <div class="course-icon dance">
+                                        <i class="fas fa-music"></i>
+                                    </div>
+                                    <div class="course-info">
+                                        <h6>健身舞蹈</h6>
+                                        <p>快乐运动，释放活力</p>
+                                        <div class="course-details">
+                                            <span class="time"><i class="fas fa-clock"></i> 55分钟</span>
+                                            <span class="difficulty medium">中级</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 今日课程安排和健身计划 -->
+                <div class="row">
+                    <div class="col-xl-6 mb-4">
+                        <div class="today-schedule-card">
+                            <div class="schedule-header">
+                                <h5 class="schedule-title">
+                                    <i class="fas fa-calendar-day me-2"></i>今日课程安排
+                                </h5>
+                            </div>
+                            <div class="schedule-list">
+                                <div class="schedule-item">
+                                    <div class="schedule-time">
+                                        <span class="time">09:00</span>
+                                        <span class="duration">60分钟</span>
+                                    </div>
+                                    <div class="schedule-info">
+                                        <h6>晨间瑜伽</h6>
+                                        <p>教练：李老师 | 瑜伽教室A</p>
+                                    </div>
+                                    <div class="schedule-status">
+                                        <span class="status upcoming">即将开始</span>
+                                    </div>
+                                </div>
+                                <div class="schedule-item">
+                                    <div class="schedule-time">
+                                        <span class="time">14:00</span>
+                                        <span class="duration">45分钟</span>
+                                    </div>
+                                    <div class="schedule-info">
+                                        <h6>有氧运动</h6>
+                                        <p>教练：王老师 | 有氧训练区</p>
+                                    </div>
+                                    <div class="schedule-status">
+                                        <span class="status scheduled">已安排</span>
+                                    </div>
+                                </div>
+                                <div class="schedule-item">
+                                    <div class="schedule-time">
+                                        <span class="time">19:00</span>
+                                        <span class="duration">50分钟</span>
+                                    </div>
+                                    <div class="schedule-info">
+                                        <h6>力量训练</h6>
+                                        <p>教练：张老师 | 器械训练区</p>
+                                    </div>
+                                    <div class="schedule-status">
+                                        <span class="status scheduled">已安排</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 mb-4">
+                        <div class="fitness-plan-card">
+                            <div class="plan-header">
+                                <h5 class="plan-title">
+                                    <i class="fas fa-target me-2"></i>本周运动计划
+                                </h5>
+                            </div>
+                            <div class="plan-progress">
+                                <div class="progress-item">
+                                    <div class="progress-info">
+                                        <span class="progress-label">有氧训练</span>
+                                        <span class="progress-value">3/5 次</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 60%"></div>
+                                    </div>
+                                </div>
+                                <div class="progress-item">
+                                    <div class="progress-info">
+                                        <span class="progress-label">力量训练</span>
+                                        <span class="progress-value">2/3 次</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 67%"></div>
+                                    </div>
+                                </div>
+                                <div class="progress-item">
+                                    <div class="progress-info">
+                                        <span class="progress-label">瑜伽课程</span>
+                                        <span class="progress-value">1/2 次</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 50%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="motivation-quote">
+                                <i class="fas fa-quote-left"></i>
+                                <p>"坚持是成功的关键，每一次训练都让你更接近目标！"</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 健身小贴士 -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="fitness-tips-card">
+                            <div class="tips-header">
+                                <h5 class="tips-title">
+                                    <i class="fas fa-lightbulb me-2"></i>健身小贴士
+                                </h5>
+                            </div>
+                            <div class="tips-grid">
+                                <div class="tip-item">
+                                    <div class="tip-icon">
+                                        <i class="fas fa-tint"></i>
+                                    </div>
+                                    <div class="tip-content">
+                                        <h6>充足水分</h6>
+                                        <p>运动前后记得补充水分，保持身体水分平衡</p>
+                                    </div>
+                                </div>
+                                <div class="tip-item">
+                                    <div class="tip-icon">
+                                        <i class="fas fa-clock"></i>
+                                    </div>
+                                    <div class="tip-content">
+                                        <h6>合理安排</h6>
+                                        <p>制定合理的训练计划，劳逸结合效果更佳</p>
+                                    </div>
+                                </div>
+                                <div class="tip-item">
+                                    <div class="tip-icon">
+                                        <i class="fas fa-apple-alt"></i>
+                                    </div>
+                                    <div class="tip-content">
+                                        <h6>营养搭配</h6>
+                                        <p>合理搭配饮食，为训练提供充足能量</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer th:replace="userCommon::common-footer"></footer>
+    </div>
+</div>
+
+<div th:include="userCommon::common-scripts"></div>
+</body>
+</html>
