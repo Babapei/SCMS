@@ -10,7 +10,7 @@
 
 ## 📋 项目简介
 
-运动中心管理系统是一个功能完善的健身房管理平台，采用B/S架构设计，实现了管理员和会员的双角色管理模式。系统界面简洁美观，操作便捷，能够有效提升运动中心的管理效率和用户体验。
+运动中心管理系统是一个功能完善的管理平台，采用B/S架构设计，实现了管理员和会员的双角色管理模式。系统界面简洁美观，操作便捷，能够有效提升运动中心的管理效率和用户体验。
 
 ### ✨ 核心特性
 
@@ -41,7 +41,7 @@
 ## 🏗️ 系统架构
 
 ```
-gym-management-system/
+SCMS/
 ├── src/main/java/com/milotnt/          # Java源码
 │   ├── controller/                      # 控制层
 │   │   ├── LoginController.java         # 登录控制器
@@ -74,7 +74,7 @@ gym-management-system/
 - **🏠 仪表盘**: 系统概览、数据统计、快捷操作
 - **👥 会员管理**: 会员信息的增删改查、会员卡查询
 - **👨‍💻 员工管理**: 员工档案管理、工号自动生成
-- **🏋️ 设备管理**: 健身器材管理、状态监控
+- **🏋️ 设备管理**: 运动器材管理、状态监控
 - **📅 课程管理**: 课程安排、教练分配、报名管理
 - **🔍 快速查询**: 根据会员卡号快速查询会员信息
 
@@ -90,7 +90,7 @@ gym-management-system/
 - **admin** - 管理员账户信息
 - **member** - 会员基本信息和卡片信息
 - **employee** - 员工档案信息
-- **equipment** - 健身设备信息
+- **equipment** - 运动设备信息
 - **class_table** - 课程基本信息
 - **class_order** - 课程报名记录
 
@@ -106,8 +106,8 @@ gym-management-system/
 
 1. **克隆项目**
    ```bash
-   git clone https://github.com/yourusername/gym-management-system.git
-   cd gym-management-system
+   git clone git@github.com:Babapei/SCMS.git
+   cd SCMS
    ```
 
 2. **创建数据库**
@@ -134,10 +134,10 @@ gym-management-system/
    ```bash
    mvn spring-boot:run
    ```
+   或者直接运行GymManagementSystemApplication.java
 
 6. **访问系统**
-   - 管理员登录: http://localhost:8080
-   - 会员登录: http://localhost:8080/toUserLogin
+   - 登录: http://localhost:8080
 
 ### 默认账户
 **管理员账户:**
@@ -220,8 +220,8 @@ server:
 
 ## 👨‍💻 开发者
 
-- **项目作者**: [您的姓名]
-- **开发时间**: 大二上学期Java课程设计
+- **项目作者**: [SDU徐王炜梵]
+- **开发时间**: 大二下学期数据库课程设计
 - **开发工具**: Eclipse IDE
 - **项目性质**: 学习项目
 
