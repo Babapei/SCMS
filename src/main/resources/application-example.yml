@@ -2,13 +2,13 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/fitness_club
     username: root
-    password: ${DB_PASSWORD:123456}  # 使用环境变量或默认值
+    password: your_mysql_password_here  # 请修改为你的MySQL密码
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   thymeleaf:
     cache: false
 
-
+# 如需修改端口，取消注释下面两行
 #server:
 #  port: 8888
 
@@ -17,4 +17,4 @@ mybatis:
   mapper-locations: mapper/*.xml
   configuration:
     map-underscore-to-camel-case: true
-  type-aliases-package: com.milotnt.pojo
+  type-aliases-package: com.milotnt.pojo 
