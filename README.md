@@ -119,6 +119,7 @@ SCMS/
    ```bash
    mysql -u root -p fitness_club < gym.sql
    ```
+   - 也可以使用SCMC.sql(这个有现有的大量数据)
 
 4. **配置数据库连接**
    编辑 `src/main/resources/application.yml`:
